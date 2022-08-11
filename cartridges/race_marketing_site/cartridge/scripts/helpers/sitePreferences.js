@@ -1,13 +1,10 @@
 var System = require('dw/system');
 
-function getSitePreferences() {
-    var prefs = {};
+function isMarketingSiteEnabled() {
     var site = System.Site.getCurrent();
-    prefs.marketingSiteEnabled = site.getCustomPreferenceValue('marketingSiteEnabled') ? true : false;
-
-    return prefs;
+    return site.getCustomPreferenceValue('marketingSiteEnabled') ? true : false;
 }
 
 module.exports = {
-    getSitePreferences: getSitePreferences
+    isMarketingSiteEnabled: isMarketingSiteEnabled
 }
