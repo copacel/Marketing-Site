@@ -1,0 +1,19 @@
+<isif condition="${!(!('enableMarketingSite' in dw.system.Site.current.preferences.custom) || ('enableMarketingSite' in dw.system.Site.current.preferences.custom && dw.system.Site.current.preferences.custom.enableMarketingSite))}">
+    <div class="minicart-total hide-link-med">
+        <a class="minicart-link" href="${URLUtils.https('Cart-Show')}" title="${Resource.msgf('minicart.count','common',null, pdict.quantityTotal)}" aria-label="${Resource.msgf('minicart.count','common',null, pdict.quantityTotal)}" aria-haspopup="true">
+            <em class="minicart-icon fa fa-shopping-bag"></em>
+            <span class="minicart-quantity">
+                <isprint value="${pdict.quantityTotal}" formatter="##" />
+            </span>
+        </a>
+    </div>
+
+    <div class="minicart-total hide-no-link">
+        <em class="minicart-icon fa fa-shopping-bag"></em>
+            <span class="minicart-quantity">
+                <isprint value="${pdict.quantityTotal}" formatter="##" />
+            </span>
+    </div>
+    <div class="popover popover-bottom"></div>
+    <div>${dw.system.Site.current.preferences.custom.enableMarketingSite}</div>
+</isif>
