@@ -17,6 +17,21 @@ function isMarketingSiteEnabled() {
 }
 
 /**
+ *
+ * @returns {boolean} a boolean of true or false
+ */
+function displayOrderHistory() {
+    var site = System.Site.getCurrent();
+    var displayOrderHistory = site.getCustomPreferenceValue('enableOrderHistory');
+
+    if (displayOrderHistory === null || displayOrderHistory === true) {
+        return true;
+    }
+
+    return false;
+}
+
+/**
  * Appends site preference values to controller view data
  * @param {Object} res - the response from the controller to append values to
  */
@@ -28,5 +43,6 @@ function appendSitePreferences(res) {
 
 module.exports = {
     isMarketingSiteEnabled: isMarketingSiteEnabled,
-    appendSitePreferences: appendSitePreferences
+    appendSitePreferences: appendSitePreferences,
+    displayOrderHistory: displayOrderHistory
 }
