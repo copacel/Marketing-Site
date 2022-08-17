@@ -3,7 +3,7 @@
 var csrfProtection = require('dw/web/CSRFProtection');
 var CustomerMgr = require('dw/customer/CustomerMgr');
 var URLUtils = require('dw/web/URLUtils');
-var sitePreferences = require('../helpers/sitePreferences');
+var sitePreferences = require('*/cartridge/scripts/helpers/sitePreferences');
 
 /**
  * Middleware validating CSRF token
@@ -14,7 +14,7 @@ var sitePreferences = require('../helpers/sitePreferences');
  */
 
 function checkMarketing(req, res, next) {
-    if (sitePreferences.isMarketingSiteEnabled() === false) {
+    if (sitePreferences.isMarketingSiteEnabled() === true) {
         res.setStatusCode(404);
         res.render('error/notFound');
     }
