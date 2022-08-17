@@ -1,0 +1,20 @@
+<isif condition="${'sfraEnableOverlayWishlist' in dw.system.Site.current.preferences.custom && dw.system.Site.current.preferences.custom.sfraEnableOverlayWishlist}">
+    <div class="col-sm-6 product-card-price">
+            <div class="row">
+                <!---item unit price --->
+                <div class="col-5">
+                    <isif condition="${!('enableProductPrice' in dw.system.Site.current.preferences.custom) || (dw.system.Site.current.preferences.custom.enableProductPrice)}">
+                        <p class="line-item-price-info">${Resource.msg('label.each.item.price','cart',null)}</p>
+                        <isset name="price" value="${item.priceObj}" scope="page"/>
+                        <isinclude template="/product/components/pricing/main" />
+                    </isif>
+                </div>
+                <!--- quantity --->
+                <div class="col-5 line-item-quantity">
+                    <isif condition="${!('enableMarketingSite' in dw.system.Site.current.preferences.custom) || (dw.system.Site.current.preferences.custom.enableMarketingSite === false)}">
+                        <isinclude template="wishlist/components/productCardQuantitySelector" />
+                    </isif>
+                </div>
+            </div>
+    </div>
+</isif>
