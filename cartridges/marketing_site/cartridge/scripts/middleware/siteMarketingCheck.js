@@ -40,6 +40,13 @@ function checkMarketing(req, res, next) {
     next();
 }
 
+/**
+ * Middleware validating if user can show orders sections
+ * @param {Object} req - Request object
+ * @param {Object} res - Response object
+ * @param {Function} next - Next call in the middleware chain
+ * @returns {void}
+ */
 function validateDisplayOrdersAjax(req, res, next) {
     if (!sitePreferences.displayOrderHistory()) {
         res.setViewData({
@@ -49,6 +56,7 @@ function validateDisplayOrdersAjax(req, res, next) {
         next();
     }
 }
+
 
 module.exports = {
     checkMarketing: checkMarketing,
