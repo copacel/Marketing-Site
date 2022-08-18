@@ -26,6 +26,32 @@ function checkMarketing(req, res, next) {
     next();
 }
 
+/**
+ * Middleware validating if user can show orders sections
+ * @param {Object} req - Request object
+ * @param {Object} res - Response object
+ * @param {Function} next - Next call in the middleware chain
+ * @returns {void}
+ */
+ function validateDisplayOrders(req, res, next) {
+    if (!sitePreferences.displayOrderHistory()) {
+        res.redirect(URLUtils.url('Home-Show'));
+    }
+    next();
+}
+
+function validateDisplayOrdersAjax(req, res, next) {
+    if (!sitePreferences.displayOrderHistory()) {
+        res.setViewData({
+            accesDenied: true
+        });
+    } else {
+        next();
+    }
+}
+
 module.exports = {
-    checkMarketing: checkMarketing
+    checkMarketing: checkMarketing,
+    validateDisplayOrders: validateDisplayOrders,
+    validateDisplayOrdersAjax: validateDisplayOrdersAjax
 };

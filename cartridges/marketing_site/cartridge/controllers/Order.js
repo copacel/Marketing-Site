@@ -12,31 +12,64 @@ var Resource = require('dw/web/Resource');
 var URLUtils = require('dw/web/URLUtils');
 var userLoggedIn = require('*/cartridge/scripts/middleware/userLoggedIn');
 var consentTracking = require('*/cartridge/scripts/middleware/consentTracking');
+var siteMarketingCheck = require('*/cartridge/scripts/middleware/siteMarketingCheck');
+var sitePreferencesHelper = require('*/cartridge/scripts/helpers/sitePreferences');
 
 
+/**
+ * Order-History : This endpoint is invoked to get Order History for the logged in shopper
+ * @name Base/Order-History
+ * @function
+ * @memberof Order
+ * @param {middleware} - siteMarketingCheck.validateDisplayOrders
+ */
+ server.prepend(
+    'History',
+    siteMarketingCheck.validateDisplayOrders,
+    function (req, res, next) {
+        next();
+    }
+);
 
 /**
  * Order-Details : This endpoint is called to get Order Details
  * @name Base/Order-Details
  * @function
  * @memberof Order
- * @param {middleware} - consentTracking.consent
- * @param {middleware} - server.middleware.https
- * @param {middleware} - userLoggedIn.validateLoggedIn
+ * @param {middleware} - siteMarketingCheck.validateDisplayOrders
  * @param {serverfunction} - get
  */
 server.prepend(
     'Details',
-    consentTracking.consent,
-    server.middleware.https,
-    userLoggedIn.validateLoggedIn,
+    siteMarketingCheck.validateDisplayOrders,
+    function (req, res, next) {
+        next();
+    }
+);
+
+/**
+ * Order-Filtered : This endpoint filters the Orders shown on the Order History Page
+ * @name Base/Order-Filtered
+ * @function
+ * @memberof Order
+ * @param {middleware} - siteMarketingCheck.validateDisplayOrdersAjax
+ * @param {querystringparameter} - orderFilter - Order Filter ID
+ * @param {category} - sensitive
+ * @param {serverfunction} - get
+ */
+server.prepend(
+    'Filtered',
+    siteMarketingCheck.validateDisplayOrdersAjax,
     function (req, res, next) {
 
-        // if (true) {
-
-        // } else {
-        //     res.redirect(URLUtils.url('Account-Show'));
-        // }
+        var data = res.getViewData();
+        if (data && data.accesDenied) {
+            res.json({
+                error: true,
+                serverErrors: []
+            });
+            return;
+        }
         next();
     }
 );
