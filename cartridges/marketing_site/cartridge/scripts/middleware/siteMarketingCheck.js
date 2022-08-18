@@ -15,8 +15,13 @@ var sitePreferences = require('*/cartridge/scripts/helpers/sitePreferences');
 
 function checkMarketing(req, res, next) {
     if (sitePreferences.isMarketingSiteEnabled() === true) {
+        if (req.querystring.args) {
+            req.session.privacyCache.set('args', req.querystring.args);
+        }
+        var target = req.querystring.rurl || 1;
         res.setStatusCode(404);
-        res.render('error/notFound');
+        res.redirect(URLUtils.url('Home-Show', 'rurl', target));
+        // res.render('error/notFound');
     }
     next();
 }
