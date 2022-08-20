@@ -1,9 +1,10 @@
 'use strict';
 
 var server = require('server');
+var siteMarketingCheck = require('../scripts/middleware/siteMarketingCheck');
 server.extend(module.superModule);
 
-server.append('Show', function (req, res, next) {
+server.append('Show', siteMarketingCheck.checkLogin, function (req, res, next) {
     var sitePreferencesHelper = require('*/cartridge/scripts/helpers/sitePreferences');
 
     var viewData = res.getViewData();
@@ -17,6 +18,14 @@ server.append('Show', function (req, res, next) {
     res.setViewData({
         account: account
     });
+    next();
+});
+
+server.append('EditProfile', siteMarketingCheck.checkLogin, function (req, res, next) {
+    next();
+});
+
+server.append('EditPassword', siteMarketingCheck.checkLogin, function (req, res, next) {
     next();
 });
 

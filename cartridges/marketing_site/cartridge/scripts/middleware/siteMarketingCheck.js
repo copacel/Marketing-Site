@@ -6,7 +6,7 @@ var URLUtils = require('dw/web/URLUtils');
 var sitePreferences = require('*/cartridge/scripts/helpers/sitePreferences');
 
 /**
- * Middleware validating CSRF token
+ * Middleware validating if site marketing preference is enabled
  * @param {Object} req - Request object
  * @param {Object} res - Response object
  * @param {Function} next - Next call in the middleware chain
@@ -57,9 +57,26 @@ function validateDisplayOrdersAjax(req, res, next) {
     }
 }
 
+/**
+ * Middleware validating if user can show orders sections
+ * @param {Object} req - Request object
+ * @param {Object} res - Response object
+ * @param {Function} next - Next call in the middleware chain
+ * @returns {void}
+ */
+
+function checkLogin(req, res, next) {
+    if (sitePreferences.isCustomerLoginEnabled() !== true) {
+        CustomerMgr.logoutCustomer(false);
+        res.redirect(URLUtils.url('Home-Show'));
+    }
+    next();
+}
+
 
 module.exports = {
     checkMarketing: checkMarketing,
     validateDisplayOrders: validateDisplayOrders,
-    validateDisplayOrdersAjax: validateDisplayOrdersAjax
+    validateDisplayOrdersAjax: validateDisplayOrdersAjax,
+    checkLogin: checkLogin
 };

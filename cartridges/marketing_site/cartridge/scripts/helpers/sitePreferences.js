@@ -41,8 +41,21 @@ function appendSitePreferences(res) {
     res.setViewData(viewData);
 };
 
+/**
+ *
+ * @returns {boolean} a boolean of true or false
+ */
+
+function isCustomerLoginEnabled() {
+    var site = System.Site.getCurrent();
+    var isCustomerLoginEnabled = site.getCustomPreferenceValue('enableCustomerLogin');
+
+    return isCustomerLoginEnabled;
+}
+
 module.exports = {
     isMarketingSiteEnabled: isMarketingSiteEnabled,
     appendSitePreferences: appendSitePreferences,
-    displayOrderHistory: displayOrderHistory
+    displayOrderHistory: displayOrderHistory,
+    isCustomerLoginEnabled: isCustomerLoginEnabled
 }

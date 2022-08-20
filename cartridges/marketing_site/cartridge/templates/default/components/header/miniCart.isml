@@ -15,5 +15,4 @@
             </span>
     </div>
     <div class="popover popover-bottom"></div>
-    <div>${dw.system.Site.current.preferences.custom.enableMarketingSite}</div>
 </isif>

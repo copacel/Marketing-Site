@@ -25,6 +25,7 @@ var sitePreferencesHelper = require('*/cartridge/scripts/helpers/sitePreferences
  */
  server.prepend(
     'History',
+    siteMarketingCheck.checkLogin,
     siteMarketingCheck.validateDisplayOrders,
     function (req, res, next) {
         next();
@@ -41,6 +42,7 @@ var sitePreferencesHelper = require('*/cartridge/scripts/helpers/sitePreferences
  */
 server.prepend(
     'Details',
+    siteMarketingCheck.checkLogin,
     siteMarketingCheck.validateDisplayOrders,
     function (req, res, next) {
         next();
@@ -59,6 +61,7 @@ server.prepend(
  */
 server.prepend(
     'Filtered',
+    siteMarketingCheck.checkLogin,
     siteMarketingCheck.validateDisplayOrdersAjax,
     function (req, res, next) {
 
@@ -91,6 +94,7 @@ server.prepend(
  */
 server.prepend(
     'Track',
+    siteMarketingCheck.checkLogin,
     siteMarketingCheck.validateDisplayOrders,
     function (req, res, next) {
 
