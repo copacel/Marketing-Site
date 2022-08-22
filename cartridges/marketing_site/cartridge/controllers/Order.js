@@ -83,18 +83,12 @@ server.prepend(
  * @function
  * @memberof Order
  * @param {middleware} - siteMarketingCheck.validateDisplayOrders
- * @param {querystringparameter} - trackOrderNumber - Order Number to track
- * @param {querystringparameter} - trackOrderEmail - Email on the Order to track
- * @param {querystringparameter} - trackOrderPostal - Postal Code on the Order to track
- * @param {querystringparameter} - csrf_token - CSRF token
- * @param {querystringparameter} - submit - This is to submit the form
  * @param {category} - sensitive
  * @param {renders} - isml
  * @param {serverfunction} - post
  */
 server.prepend(
     'Track',
-    siteMarketingCheck.checkLogin,
     siteMarketingCheck.validateDisplayOrders,
     function (req, res, next) {
 

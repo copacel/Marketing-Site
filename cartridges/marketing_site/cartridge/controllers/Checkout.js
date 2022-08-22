@@ -4,7 +4,7 @@ var server = require('server');
 var siteMarketingCheck = require('../scripts/middleware/siteMarketingCheck');
 server.extend(module.superModule);
 
-server.append('Begin', siteMarketingCheck.checkMarketing, function (req, res, next) {
+server.prepend('Begin', siteMarketingCheck.checkMarketingSiteStatus, function (req, res, next) {
     next();
 });
 

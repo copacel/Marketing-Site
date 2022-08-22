@@ -13,18 +13,22 @@ var sitePreferences = require('*/cartridge/scripts/helpers/sitePreferences');
  * @returns {void}
  */
 
-function checkMarketing(req, res, next) {
+function checkMarketingSiteStatus(req, res, next) {
     if (sitePreferences.isMarketingSiteEnabled() === true) {
-        if (req.querystring.args) {
-            req.session.privacyCache.set('args', req.querystring.args);
+        if (req.httpMethod !== 'GET') {
+            res.json({
+                accesDenied: true,
+                cartError: true,
+                redirectUrl: URLUtils.url('Home-Show').toString()
+            });
+        } else {
+            res.redirect(URLUtils.url('Home-Show'));
+            return next();
         }
-        var target = req.querystring.rurl || 1;
-        res.setStatusCode(404);
-        res.redirect(URLUtils.url('Home-Show', 'rurl', target));
-        // res.render('error/notFound');
     }
     next();
 }
+
 
 /**
  * Middleware validating if user can show orders sections
@@ -68,14 +72,24 @@ function validateDisplayOrdersAjax(req, res, next) {
 function checkLogin(req, res, next) {
     if (sitePreferences.isCustomerLoginEnabled() !== true) {
         CustomerMgr.logoutCustomer(false);
-        res.redirect(URLUtils.url('Home-Show'));
+        if (req.httpMethod !== 'GET') {
+            res.json({
+                accesDenied: true,
+                success: true,
+                cartError: true,
+                redirectUrl: URLUtils.url('Home-Show').toString()
+            });
+        } else {
+            res.redirect(URLUtils.url('Home-Show'));
+            return next();
+        }
     }
     next();
 }
 
 
 module.exports = {
-    checkMarketing: checkMarketing,
+    checkMarketingSiteStatus: checkMarketingSiteStatus,
     validateDisplayOrders: validateDisplayOrders,
     validateDisplayOrdersAjax: validateDisplayOrdersAjax,
     checkLogin: checkLogin
