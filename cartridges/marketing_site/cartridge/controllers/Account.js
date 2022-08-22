@@ -29,4 +29,12 @@ server.append('EditPassword', siteMarketingCheck.checkLogin, function (req, res,
     next();
 });
 
+server.append('SaveProfile', siteMarketingCheck.checkLogin, function (req, res, next) {
+    next();
+});
+
+server.append('SavePassword', siteMarketingCheck.checkLogin, function (req, res, next) {
+    next();
+});
+
 module.exports = server.exports();
