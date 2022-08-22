@@ -50,7 +50,11 @@ function isCustomerLoginEnabled() {
     var site = System.Site.getCurrent();
     var isCustomerLoginEnabled = site.getCustomPreferenceValue('enableCustomerLogin');
 
-    return isCustomerLoginEnabled;
+    if (isCustomerLoginEnabled === null || isCustomerLoginEnabled === true) {
+        return true;
+    }
+
+    return false;
 }
 
 module.exports = {
