@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xmlns="http://www.demandware.com/xml/impex/metadata/2006-10-31">
+
+    <type-extension type-id="SitePreferences">
+        <custom-attribute-definitions>
+            <attribute-definition attribute-id="enableMarketingSite">
+                <display-name xml:lang="x-default">Enable Marketing Site</display-name>
+                <description xml:lang="x-default">Disable transactional features such as Cart, Checkout. Note: The cartridge marketing_site must be added to the cartridge path and uploaded to your instance.</description>
+                <type>boolean</type>
+                <mandatory-flag>false</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+                <default-value>false</default-value>
+            </attribute-definition>
+            <attribute-definition attribute-id="enableCustomerLogin">
+                <display-name xml:lang="x-default">Enable Customer Register/Login</display-name>
+                <description xml:lang="x-default">Note: The cartridge marketing_site must be added to the cartridge path and uploaded to your instance.</description>
+                <type>boolean</type>
+                <mandatory-flag>false</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+                <default-value>true</default-value>
+            </attribute-definition>
+            <attribute-definition attribute-id="enableProductAvailability">
+                <display-name xml:lang="x-default">Enable Product Availability</display-name>
+                <description xml:lang="x-default">Show/Hide product availability info. The cartridge marketing_site must be added to the cartridge path and uploaded to your instance.</description>
+                <type>boolean</type>
+                <mandatory-flag>false</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+                <default-value>true</default-value>
+            </attribute-definition>
+            <attribute-definition attribute-id="enableProductVariations">
+                <display-name xml:lang="x-default">Enable Product Variations</display-name>
+                <description xml:lang="x-default">Show/Hide product variations. This config should be enabled if enableMarketingSite is set to No. The cartridge marketing_site must be added to the cartridge path and uploaded to your instance.</description>
+                <type>boolean</type>
+                <mandatory-flag>false</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+                <default-value>true</default-value>
+            </attribute-definition>
+            <attribute-definition attribute-id="enableProductOptions">
+                <display-name xml:lang="x-default">Enable Product Options</display-name>
+                <description xml:lang="x-default">Show/Hide product options. This config should be enabled if enableMarketingSite is set to No. The cartridge marketing_site must be added to the cartridge path and uploaded to your instance.</description>
+                <type>boolean</type>
+                <mandatory-flag>false</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+                <default-value>true</default-value>
+            </attribute-definition>
+            <attribute-definition attribute-id="enableProductPromotions">
+                <display-name xml:lang="x-default">Enable Product Promotions</display-name>
+                <description xml:lang="x-default">Show/Hide product promotions. This config should be enabled if enableMarketingSite is set to No. The cartridge marketing_site must be added to the cartridge path and uploaded to your instance.</description>
+                <type>boolean</type>
+                <mandatory-flag>false</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+                <default-value>true</default-value>
+            </attribute-definition>
+            <attribute-definition attribute-id="enableProductPrice">
+                <display-name xml:lang="x-default">Enable Product Price</display-name>
+                <description xml:lang="x-default">Show/Hide product price. Note: The cartridge marketing_site must be added to the cartridge path and uploaded to your instance.</description>
+                <type>boolean</type>
+                <mandatory-flag>false</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+                <default-value>true</default-value>
+            </attribute-definition>
+            <attribute-definition attribute-id="enableOrderHistory">
+                <display-name xml:lang="x-default">Enable Order History</display-name>
+                <description xml:lang="x-default">Show/Hide Order History in Account Dashboard. Note: The cartridge marketing_site must be added to the cartridge path and uploaded to your instance.</description>
+                <type>boolean</type>
+                <mandatory-flag>false</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+                <default-value>true</default-value>
+            </attribute-definition>
+        </custom-attribute-definitions>
+        <group-definitions>
+            <attribute-group group-id="Marketing Site">
+                <attribute attribute-id="enableMarketingSite"/>
+                <attribute attribute-id="enableCustomerLogin"/>
+                <attribute attribute-id="enableProductAvailability"/>
+                <attribute attribute-id="enableProductVariations"/>
+                <attribute attribute-id="enableProductOptions"/>
+                <attribute attribute-id="enableProductPromotions"/>
+                <attribute attribute-id="enableProductPrice"/>
+                <attribute attribute-id="enableOrderHistory"/>
+                <attribute attribute-id="enableRatingsAndReviews"/>
+                <attribute attribute-id="sfraEnableOverlayInStorePickup"/>
+                <attribute attribute-id="sfraEnableOverlayWishlist"/>
+            </attribute-group>
+        </group-definitions>
+    </type-extension>
+
+</metadata>
