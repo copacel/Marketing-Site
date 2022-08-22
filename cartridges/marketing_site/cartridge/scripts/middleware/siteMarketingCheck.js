@@ -19,6 +19,10 @@ function checkMarketingSiteStatus(req, res, next) {
             res.json({
                 accesDenied: true,
                 cartError: true,
+                error: true,
+                fieldErrors: [],
+                serverErrors: [],
+                success: true,
                 redirectUrl: URLUtils.url('Home-Show').toString()
             });
         } else {
@@ -75,8 +79,10 @@ function checkLogin(req, res, next) {
         if (req.httpMethod !== 'GET') {
             res.json({
                 accesDenied: true,
+                error: true,
+                fieldErrors: [],
+                serverErrors: [],
                 success: true,
-                cartError: true,
                 redirectUrl: URLUtils.url('Home-Show').toString()
             });
         } else {
