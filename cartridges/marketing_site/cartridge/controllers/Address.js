@@ -16,4 +16,8 @@ server.append('AddAddress', siteMarketingCheck.checkLogin, function (req, res, n
     next();
 });
 
+server.append('SaveAddress', siteMarketingCheck.checkLogin, function (req, res, next) {
+    next();
+});
+
 module.exports = server.exports();
