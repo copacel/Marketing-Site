@@ -38,7 +38,7 @@
                         </li>
                     </isif>
 
-                    <isif condition="${!('enableOrderHistory' in dw.system.Site.current.preferences.custom) || dw.system.Site.current.preferences.custom.enableOrderHistory}">
+                    <isif condition="${!('enableMarketingSite' in dw.system.Site.current.preferences.custom) || dw.system.Site.current.preferences.custom.enableMarketingSite === false}">
                         <li class="nav-item" role="presentation">
                             <a href="${URLUtils.url('Order-History')}" role="menuitem" tabindex="-1">
                                 <i class="fa fa-shopping-cart" aria-hidden="true"></i>

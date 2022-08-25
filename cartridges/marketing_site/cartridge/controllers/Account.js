@@ -23,9 +23,9 @@ server.append('Show', siteMarketingCheck.checkLogin, function (req, res, next) {
 
     var viewData = res.getViewData();
     var account = viewData.account;
-    var displayOrderHistory = sitePreferencesHelper.displayOrderHistory();
+    var isMarketingSiteEnabled = sitePreferencesHelper.isMarketingSiteEnabled();
 
-    if (!displayOrderHistory && account) {
+    if (isMarketingSiteEnabled && account) {
         account.orderHistory = false;
     }
 

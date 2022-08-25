@@ -33,38 +33,6 @@ function checkMarketingSiteStatus(req, res, next) {
     next();
 }
 
-
-/**
- * Middleware validating if user can show orders sections
- * @param {Object} req - Request object
- * @param {Object} res - Response object
- * @param {Function} next - Next call in the middleware chain
- * @returns {void}
- */
- function validateDisplayOrders(req, res, next) {
-    if (!sitePreferences.displayOrderHistory()) {
-        res.redirect(URLUtils.url('Home-Show'));
-    }
-    next();
-}
-
-/**
- * Middleware validating if user can show orders sections
- * @param {Object} req - Request object
- * @param {Object} res - Response object
- * @param {Function} next - Next call in the middleware chain
- * @returns {void}
- */
-function validateDisplayOrdersAjax(req, res, next) {
-    if (!sitePreferences.displayOrderHistory()) {
-        res.setViewData({
-            accesDenied: true
-        });
-    } else {
-        next();
-    }
-}
-
 /**
  * Middleware validating if user can show orders sections
  * @param {Object} req - Request object
@@ -96,7 +64,5 @@ function checkLogin(req, res, next) {
 
 module.exports = {
     checkMarketingSiteStatus: checkMarketingSiteStatus,
-    validateDisplayOrders: validateDisplayOrders,
-    validateDisplayOrdersAjax: validateDisplayOrdersAjax,
     checkLogin: checkLogin
 };

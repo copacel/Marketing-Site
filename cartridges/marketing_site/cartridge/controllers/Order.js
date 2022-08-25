@@ -21,12 +21,12 @@ var sitePreferencesHelper = require('*/cartridge/scripts/helpers/sitePreferences
  * @name Base/Order-History
  * @function
  * @memberof Order
- * @param {middleware} - siteMarketingCheck.validateDisplayOrders
+ * @param {middleware} - siteMarketingCheck.checkMarketingSiteStatus
  */
  server.prepend(
     'History',
     siteMarketingCheck.checkLogin,
-    siteMarketingCheck.validateDisplayOrders,
+    siteMarketingCheck.checkMarketingSiteStatus,
     function (req, res, next) {
         next();
     }
@@ -37,13 +37,13 @@ var sitePreferencesHelper = require('*/cartridge/scripts/helpers/sitePreferences
  * @name Base/Order-Details
  * @function
  * @memberof Order
- * @param {middleware} - siteMarketingCheck.validateDisplayOrders
+ * @param {middleware} - siteMarketingCheck.checkMarketingSiteStatus
  * @param {serverfunction} - get
  */
 server.prepend(
     'Details',
     siteMarketingCheck.checkLogin,
-    siteMarketingCheck.validateDisplayOrders,
+    siteMarketingCheck.checkMarketingSiteStatus,
     function (req, res, next) {
         next();
     }
@@ -54,7 +54,7 @@ server.prepend(
  * @name Base/Order-Filtered
  * @function
  * @memberof Order
- * @param {middleware} - siteMarketingCheck.validateDisplayOrdersAjax
+ * @param {middleware} - siteMarketingCheck.checkMarketingSiteStatus
  * @param {querystringparameter} - orderFilter - Order Filter ID
  * @param {category} - sensitive
  * @param {serverfunction} - get
@@ -62,7 +62,7 @@ server.prepend(
 server.prepend(
     'Filtered',
     siteMarketingCheck.checkLogin,
-    siteMarketingCheck.validateDisplayOrdersAjax,
+    siteMarketingCheck.checkMarketingSiteStatus,
     function (req, res, next) {
 
         var data = res.getViewData();
@@ -82,14 +82,14 @@ server.prepend(
  * @name Base/Order-Track
  * @function
  * @memberof Order
- * @param {middleware} - siteMarketingCheck.validateDisplayOrders
+ * @param {middleware} - siteMarketingCheck.checkMarketingSiteStatus
  * @param {category} - sensitive
  * @param {renders} - isml
  * @param {serverfunction} - post
  */
 server.prepend(
     'Track',
-    siteMarketingCheck.validateDisplayOrders,
+    siteMarketingCheck.checkMarketingSiteStatus,
     function (req, res, next) {
 
         var data = res.getViewData();
