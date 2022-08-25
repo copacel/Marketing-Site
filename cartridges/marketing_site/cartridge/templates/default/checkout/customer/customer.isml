@@ -1,0 +1,18 @@
+<div class="card ghost customer">
+    <div class="card-header">
+        <h2 class="card-header-custom">${Resource.msg('heading.checkout.customer', 'checkout', null)}</h2>
+    </div>
+</div>
+
+<div class="card customer-section">
+    <div class="card-header">
+        <h2 class="card-header-custom">${Resource.msg('heading.checkout.customer', 'checkout', null)}</h2>
+    </div>
+    <div class="customer-error"></div>
+    <isif condition="${!('enableCustomerLogin' in dw.system.Site.current.preferences.custom) || dw.system.Site.current.preferences.custom.enableCustomerLogin}">
+        <isinclude template="checkout/customer/customerCard" />
+    <iselse>
+        <isinclude template="checkout/customer/customerCardGuest" />
+    </isif>
+    <isinclude template="checkout/customer/customerOAuthCard" />
+</div>
