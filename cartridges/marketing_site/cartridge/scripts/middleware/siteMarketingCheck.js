@@ -5,6 +5,10 @@ var CustomerMgr = require('dw/customer/CustomerMgr');
 var URLUtils = require('dw/web/URLUtils');
 var sitePreferences = require('*/cartridge/scripts/helpers/sitePreferences');
 
+function getRedirectUrlForAccessDenied() {
+    return URLUtils.url('Home-ErrorAccessDenied').toString();
+}
+
 /**
  * Middleware validating if site marketing preference is enabled
  * @param {Object} req - Request object
@@ -23,10 +27,10 @@ function checkMarketingSiteStatus(req, res, next) {
                 fieldErrors: [],
                 serverErrors: [],
                 success: true,
-                redirectUrl: URLUtils.url('Home-Show').toString()
+                redirectUrl: getRedirectUrlForAccessDenied()
             });
         } else {
-            res.redirect(URLUtils.url('Home-Show'));
+            res.redirect(getRedirectUrlForAccessDenied());
             return next();
         }
     }
@@ -51,10 +55,10 @@ function checkLogin(req, res, next) {
                 fieldErrors: [],
                 serverErrors: [],
                 success: true,
-                redirectUrl: URLUtils.url('Home-Show').toString()
+                redirectUrl: getRedirectUrlForAccessDenied()
             });
         } else {
-            res.redirect(URLUtils.url('Home-Show'));
+            res.redirect(getRedirectUrlForAccessDenied());
             return next();
         }
     }
@@ -64,5 +68,6 @@ function checkLogin(req, res, next) {
 
 module.exports = {
     checkMarketingSiteStatus: checkMarketingSiteStatus,
-    checkLogin: checkLogin
+    checkLogin: checkLogin,
+    getRedirectUrlForAccessDenied: getRedirectUrlForAccessDenied
 };

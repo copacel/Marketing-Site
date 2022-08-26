@@ -98,7 +98,7 @@ server.prepend(
                 error: true,
                 serverErrors: []
             });
-            res.redirect(URLUtils.url('Home-Show'));
+            res.redirect(siteMarketingCheck.getRedirectUrlForAccessDenied());
             next();
         }
         next();

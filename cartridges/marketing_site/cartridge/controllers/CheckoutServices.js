@@ -57,4 +57,33 @@ server.prepend('PlaceOrder', siteMarketingCheck.checkMarketingSiteStatus, functi
     next();
 });
 
+
+/**
+ * Handle Ajax registered customer form submit.
+ */
+server.prepend('LoginCustomer', siteMarketingCheck.checkLogin, function (req, res, next) {
+    var data = res.getViewData();
+    if (data && data.accesDenied) {
+        this.emit('route:Complete', req, res);
+        return;
+    }
+    next();
+});
+
+/**
+ * Handle Ajax guest customer form submit.
+ */
+server.prepend(
+    'SubmitCustomer',
+    siteMarketingCheck.checkMarketingSiteStatus,
+    function (req, res, next) {
+        var data = res.getViewData();
+        if (data && data.accesDenied) {
+            this.emit('route:Complete', req, res);
+            return;
+        }
+        next();
+    }
+);
+
 module.exports = server.exports();
