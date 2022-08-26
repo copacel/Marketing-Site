@@ -5,7 +5,7 @@
         <custom-attribute-definitions>
             <attribute-definition attribute-id="enableMarketingSite">
                 <display-name xml:lang="x-default">Enable Marketing Site</display-name>
-                <description xml:lang="x-default">Disable transactional features such as Cart, Checkout. Note: The cartridge marketing_site must be added to the cartridge path and uploaded to your instance.</description>
+                <description xml:lang="x-default">Disable transactional features such as Add to Cart, Cart, Checkout, Payment, Order History.</description>
                 <type>boolean</type>
                 <mandatory-flag>false</mandatory-flag>
                 <externally-managed-flag>false</externally-managed-flag>
@@ -13,7 +13,7 @@
             </attribute-definition>
             <attribute-definition attribute-id="enableCustomerLogin">
                 <display-name xml:lang="x-default">Enable Customer Register/Login</display-name>
-                <description xml:lang="x-default">Note: The cartridge marketing_site must be added to the cartridge path and uploaded to your instance.</description>
+                <description xml:lang="x-default">If this setting is disabled, customers can no longer register or log in to the site. If the Marketing Site is disabled and this setting is disabled, they can place an order as guest.</description>
                 <type>boolean</type>
                 <mandatory-flag>false</mandatory-flag>
                 <externally-managed-flag>false</externally-managed-flag>
@@ -21,15 +21,7 @@
             </attribute-definition>
             <attribute-definition attribute-id="enableProductAvailability">
                 <display-name xml:lang="x-default">Enable Product Availability</display-name>
-                <description xml:lang="x-default">Show/Hide product availability info. The cartridge marketing_site must be added to the cartridge path and uploaded to your instance.</description>
-                <type>boolean</type>
-                <mandatory-flag>false</mandatory-flag>
-                <externally-managed-flag>false</externally-managed-flag>
-                <default-value>true</default-value>
-            </attribute-definition>
-            <attribute-definition attribute-id="enableProductVariations">
-                <display-name xml:lang="x-default">Enable Product Variations</display-name>
-                <description xml:lang="x-default">Show/Hide product variations. This config should be enabled if enableMarketingSite is set to No. The cartridge marketing_site must be added to the cartridge path and uploaded to your instance.</description>
+                <description xml:lang="x-default">Show/Hide product availability info. This setting is useful if the marketing site is enabled and we don't want the buyer to see the product stock.</description>
                 <type>boolean</type>
                 <mandatory-flag>false</mandatory-flag>
                 <externally-managed-flag>false</externally-managed-flag>
@@ -37,7 +29,15 @@
             </attribute-definition>
             <attribute-definition attribute-id="enableProductPrice">
                 <display-name xml:lang="x-default">Enable Product Price</display-name>
-                <description xml:lang="x-default">Show/Hide product price. Note: The cartridge marketing_site must be added to the cartridge path and uploaded to your instance.</description>
+                <description xml:lang="x-default">Show/Hide product price.</description>
+                <type>boolean</type>
+                <mandatory-flag>false</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+                <default-value>true</default-value>
+            </attribute-definition>
+            <attribute-definition attribute-id="enableProductVariations">
+                <display-name xml:lang="x-default">Enable Product Variations</display-name>
+                <description xml:lang="x-default">Show/Hide product variations, like color, size. This config must be enabled if enableMarketingSite is set to No or enableProductPrice is set to Yes.</description>
                 <type>boolean</type>
                 <mandatory-flag>false</mandatory-flag>
                 <externally-managed-flag>false</externally-managed-flag>
@@ -49,8 +49,8 @@
                 <attribute attribute-id="enableMarketingSite"/>
                 <attribute attribute-id="enableCustomerLogin"/>
                 <attribute attribute-id="enableProductAvailability"/>
-                <attribute attribute-id="enableProductVariations"/>
                 <attribute attribute-id="enableProductPrice"/>
+                <attribute attribute-id="enableProductVariations"/>
             </attribute-group>
         </group-definitions>
     </type-extension>
