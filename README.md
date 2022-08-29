@@ -8,14 +8,14 @@ The following cartridge aims to allow merchants to enable or disable certain tra
 
 ### Cartridge installation
 
-b)	Import metadata:
+a)	Import metadata:
 -	In the cartridge folder find \metadata\site-import\meta\marketingSitePreferences.xml
 -	Go to Business Manager > Administration > Site Development > Import & Export
 -	Under Import & Export Files, click Upload and select the .xml file in the metadata folder
 -	Under Meta Data, 	click Import and select the file that you have just uploaded
 -	This should create a new group containing multiple site preference attributes. To check whether the import was successful, go to Business Manager > Merchant Tools > Site Preferences > Custom Preferences. Search for Marketing Site group. Clicking it should return your attributes.
 
-c)	Update the cartridge path:
+b)	Update the cartridge path:
 -	Go to Business Manager > Administration > Sites > Manage Sites
 -	Select the site you wish
 -	Click on the Settings tab
