@@ -46,6 +46,9 @@ The following table contains the 5 attributes used to manipulate the site prefer
 
 **enableProductVariations** - Show/Hide product variations, like color, size. This config must be enabled if enableMarketingSite is set to No or enableProductPrice is set to Yes.
 
+## Dependencies
+
+None at the moment.
 ## Other considerations
 
 The attributes allow flexibility, meaning you can enable and disable them independently. As such, **if _enableMarketingSite_ is disabled, then _enableCustomerLogin_ will have to be enabled** as they are not interdependent.
