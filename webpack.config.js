@@ -7,7 +7,7 @@ var path = require('path');
         name: 'js',
         entry: sgmfScripts.createJsPath(),
         output: {
-            path: path.resolve('./cartridges/marketing_site/cartridge/static'),
+            path: path.resolve('./cartridges/plugin_marketingsite/cartridge/static'),
             filename: '[name].js'
         }
     }, {
@@ -15,7 +15,7 @@ var path = require('path');
         name: 'scss',
         entry: sgmfScripts.createScssPath(),
         output: {
-            path: path.resolve('./cartridges/marketing_site/cartridge/static'),
+            path: path.resolve('./cartridges/plugin_marketingsite/cartridge/static'),
             filename: '[name].css'
         },
         module: {
