@@ -40,9 +40,9 @@ The following table contains the 5 attributes used to manipulate the site prefer
 
 **enableCustomerLogin** - If this setting is disabled, customers can no longer register or log in to the site. If the Marketing Site is disabled and this setting is disabled, they can place an order as guest.
 
-**enableProductAvailability** - Show/Hide product availability info. This setting is useful if the marketing site is enabled and we don't want the buyer to see the product stock.
+**enableProductAvailability** - Show/Hide product availability info in the PDP. This setting is useful if the marketing site is enabled and we don't want the buyer to see the product stock.
 
-**enableProductPrice** - Show/Hide product price.
+**enableProductPrice** - Show/Hide product price in the PDP.
 
 **enableProductVariations** - Show/Hide product variations, like color, size. This config must be enabled if enableMarketingSite is set to No or enableProductPrice is set to Yes.
 
