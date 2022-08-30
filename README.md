@@ -19,7 +19,7 @@ b)	Update the cartridge path:
 -	Go to Business Manager > Administration > Sites > Manage Sites
 -	Select the site you wish
 -	Click on the Settings tab
--	Prepend “site_marketing:” in the cartridge path (without quotes)
+-	Prepend “plugin_marketingsite:” in the cartridge path (without quotes)
 -	Click Apply
 
 ### Custom attributes
