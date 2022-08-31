@@ -8,7 +8,11 @@
         <ul class="list-unstyled availability-msg">
             <li>
                 <isif condition="${!product.readyToOrder}">
-                    <div>${Resource.msg('info.selectforstock', 'product', 'Select Styles for Availability')}</div>
+                    <div>
+                        ${!('enableProductVariations' in dw.system.Site.current.preferences.custom) || (dw.system.Site.current.preferences.custom.enableProductVariations)
+                        ? Resource.msg('info.selectforstock', 'product', 'Select Styles for Availability')
+                        : Resource.msg('info.selectforstockNA', 'product', 'Select Styles for Availability')}
+                    </div>
                 <iselse>
                     <isloop items="${product.availability.messages}" var="message">
                         <div>${message}</div>
